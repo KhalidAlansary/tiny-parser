@@ -54,7 +54,6 @@ typedef enum {
 /**
  * @brief Get the next token from the file.
  *
- * @param file The file to read from.
  * @return Token The next token.
  */
 Token getNextToken();
