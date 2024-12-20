@@ -127,7 +127,8 @@ void MainWindow::create_dot_graph(Agraph_t* g, Node* node) {
     snprintf(childname, sizeof(childname), "node%p", (void*)node->left);
     Agnode_t* child = agnode(g, childname, 1);
     if (child) {
-      agedge(g, gnode, child, NULL, 1);
+      Agedge_t* left_edge = agedge(g, gnode, child, NULL, 1);
+      agsafeset(left_edge, "label", "left", "");
     }
     create_dot_graph(g, node->left);
   }
@@ -138,9 +139,22 @@ void MainWindow::create_dot_graph(Agraph_t* g, Node* node) {
     snprintf(childname, sizeof(childname), "node%p", (void*)node->right);
     Agnode_t* child = agnode(g, childname, 1);
     if (child) {
-      agedge(g, gnode, child, NULL, 1);
+      Agedge_t* right_edge = agedge(g, gnode, child, NULL, 1);
+      agsafeset(right_edge, "label", "right", "");
     }
     create_dot_graph(g, node->right);
+  }
+
+  // Process third child
+  if (node->third) {
+    char childname[32];
+    snprintf(childname, sizeof(childname), "node%p", (void*)node->third);
+    Agnode_t* child = agnode(g, childname, 1);
+    if (child) {
+      Agedge_t* third_edge = agedge(g, gnode, child, NULL, 1);
+      agsafeset(third_edge, "label", "third", "");
+    }
+    create_dot_graph(g, node->third);
   }
 
   // Process sibling
@@ -160,7 +174,8 @@ void MainWindow::create_dot_graph(Agraph_t* g, Node* node) {
     Agnode_t* sibling = agnode(g, siblingname, 1);
     if (sibling) {
       agsubnode(subg, sibling, 1);
-      agedge(g, gnode, sibling, NULL, 1);
+      Agedge_t* next_edge = agedge(g, gnode, sibling, NULL, 1);
+      agsafeset(next_edge, "label", "next", "");
     }
     create_dot_graph(g, node->next);
   }

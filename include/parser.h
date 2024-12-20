@@ -26,6 +26,7 @@ typedef struct Node {
   NodeType type;      /**< Type of the node */
   struct Node* left;  /**< Left child */
   struct Node* right; /**< Right child */
+  struct Node* third; /**< Third child */
   struct Node* next;  /**< Next node */
   char* value;        /**< Value of the node */
 } Node;

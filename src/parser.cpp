@@ -23,6 +23,7 @@ static Node* create_node(const NodeType type) {
   node->left = NULL;
   node->right = NULL;
   node->next = NULL;
+  node->third = NULL;
   return node;
 }
 
@@ -105,7 +106,7 @@ Node* if_stmt() {
   node->right = stmt_sequence();
   if (current_token.type == ELSE) {
     match(ELSE);
-    node->next = stmt_sequence();
+    node->third = stmt_sequence();
   }
   match(END);
   return node;
