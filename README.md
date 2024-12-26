@@ -1,5 +1,9 @@
 # Tiny Scanner
 
+## Screenshots
+
+![parse tree screenshot](https://github.com/user-attachments/assets/35b2448d-7acb-4985-b072-9ac76b380ff9)
+
 ## Demo
 
 ![demo](https://github.com/user-attachments/assets/76ba1cf4-c8c2-483c-934e-ed950f13f082)
