@@ -1,4 +1,4 @@
-# Tiny Scanner
+# Tiny Parser
 
 ## Screenshots
 
